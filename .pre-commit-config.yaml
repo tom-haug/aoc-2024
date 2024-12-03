@@ -1,0 +1,15 @@
+repos:
+- repo: local
+  hooks:
+    - id: formatting
+      name: formatting
+      entry: bash -c 'pipenv run fmt && exit 0'
+      language: system
+    - id: linting
+      name: linting
+      entry: bash -c 'pipenv run lint && exit 0'
+      language: system
+    - id: typechecking
+      name: typechecking
+      entry: bash -c 'pipenv run typecheck && exit 0'
+      language: system
