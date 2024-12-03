@@ -1,0 +1,8 @@
+{
+  "python.pythonPath": "C:\\Users\\tomha\\.virtualenvs\\aoc-2022-c4pb-XhY\\Scripts\\python.exe",
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "editor.formatOnSave": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "mypy.runUsingActiveInterpreter": true
+}

@@ -1,0 +1,39 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pytest = "*"
+advent-of-code-data = "*"
+black = "*"
+flake8 = "*"
+python-dotenv = "*"
+mypy = "*"
+pre-commit = "*"
+more-itertools = "*"
+nptyping = "*"
+astar = "*"
+matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+setup = "pre-commit install"
+test = "pytest -v -s"
+lint = "flake8 src"
+typecheck = "mypy src"
+fmt = "black src"
+new = "python -m src.new_day"
+part = "python -m src.run_part"
+dryrun = "python -m src.run_part --dryrun"
+checks = """sh -c "
+  pipenv run fmt \
+  && pipenv run lint \
+  && pipenv run typecheck
+  "
+"""
