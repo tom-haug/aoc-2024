@@ -105,6 +105,7 @@ class Controller(ABC, Generic[T]):
             print(f"Result: File: {file_path}, result: {result}")
             self.__try_submit(result)
         else:
+            print(f"Result - expected: {expected_result}, actual: {result}")
             if result != expected_result:
                 raise Exception(
                     f"{Colors.FAIL}Test Failed: File: {file_path}, expecting: {expected_result}, actual: {result}"
