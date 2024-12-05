@@ -1,6 +1,5 @@
 SOLVER_TEMPLATE = """
 from abc import abstractmethod
-from typing import Any
 from src.shared.controller import Solver
 from src.shared.file_loading import load_text_file_lines
 

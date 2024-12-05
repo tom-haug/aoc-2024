@@ -19,7 +19,7 @@ class Day01PartASolver(Day01Solver):
 
 class Day01PartAController(Controller[AnswerType]):
     def __init__(self):
-        super().__init__(1, 'a')
+        super().__init__(1, "a")
 
     def _new_solver(self):
         return Day01PartASolver()

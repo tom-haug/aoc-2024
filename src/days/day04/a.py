@@ -10,22 +10,58 @@ class Day04PartASolver(Day04Solver):
         for row in range(self.data.shape[0]):
             for col in range(self.data.shape[1]):
                 if col < self.data.shape[1] - 3:
-                    if self.check_word([(row, col), (row, col + 1), (row, col + 2), (row, col + 3)]):
+                    if self.check_word(
+                        [(row, col), (row, col + 1), (row, col + 2), (row, col + 3)]
+                    ):
                         count += 1
-                    if row > 2 and self.check_word([(row, col), (row - 1, col + 1), (row - 2, col + 2), (row - 3, col + 3)]):
+                    if row > 2 and self.check_word(
+                        [
+                            (row, col),
+                            (row - 1, col + 1),
+                            (row - 2, col + 2),
+                            (row - 3, col + 3),
+                        ]
+                    ):
                         count += 1
-                    if row < self.data.shape[0] - 3 and self.check_word([(row, col), (row + 1, col + 1), (row + 2, col + 2), (row + 3, col + 3)]):
+                    if row < self.data.shape[0] - 3 and self.check_word(
+                        [
+                            (row, col),
+                            (row + 1, col + 1),
+                            (row + 2, col + 2),
+                            (row + 3, col + 3),
+                        ]
+                    ):
                         count += 1
                 if col > 2:
-                    if self.check_word([(row, col), (row, col - 1), (row, col - 2), (row, col - 3)]):
+                    if self.check_word(
+                        [(row, col), (row, col - 1), (row, col - 2), (row, col - 3)]
+                    ):
                         count += 1
-                    if row > 2 and self.check_word([(row, col), (row - 1, col - 1), (row - 2, col - 2), (row - 3, col - 3)]):
+                    if row > 2 and self.check_word(
+                        [
+                            (row, col),
+                            (row - 1, col - 1),
+                            (row - 2, col - 2),
+                            (row - 3, col - 3),
+                        ]
+                    ):
                         count += 1
-                    if row < self.data.shape[0] - 3 and self.check_word([(row, col), (row + 1, col - 1), (row + 2, col - 2), (row + 3, col - 3)]):
+                    if row < self.data.shape[0] - 3 and self.check_word(
+                        [
+                            (row, col),
+                            (row + 1, col - 1),
+                            (row + 2, col - 2),
+                            (row + 3, col - 3),
+                        ]
+                    ):
                         count += 1
-                if row < self.data.shape[0] - 3 and self.check_word([(row, col), (row + 1, col), (row + 2, col), (row + 3, col)]):
+                if row < self.data.shape[0] - 3 and self.check_word(
+                    [(row, col), (row + 1, col), (row + 2, col), (row + 3, col)]
+                ):
                     count += 1
-                if row > 2 and self.check_word([(row, col), (row - 1, col), (row - 2, col), (row - 3, col)]):
+                if row > 2 and self.check_word(
+                    [(row, col), (row - 1, col), (row - 2, col), (row - 3, col)]
+                ):
                     count += 1
 
         return count
@@ -34,12 +70,12 @@ class Day04PartASolver(Day04Solver):
         word = ""
         for coord in coordinates:
             word += self.data[coord[0], coord[1]]
-        return word == 'XMAS'
+        return word == "XMAS"
 
 
 class Day04PartAController(Controller[AnswerType]):
     def __init__(self):
-        super().__init__(4, 'a')
+        super().__init__(4, "a")
 
     def _new_solver(self):
         return Day04PartASolver()

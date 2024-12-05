@@ -10,7 +10,7 @@ AnswerType = int
 
 
 class Day04Solver(Solver[AnswerType]):
-    data : NDArray
+    data: NDArray
 
     def initialize(self, file_path: str):
         input = load_text_file_lines(file_path) or ""
