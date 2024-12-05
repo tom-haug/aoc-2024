@@ -5,7 +5,9 @@ from src.shared.file_result import FileResult
 
 class Day02PartBSolver(Day02Solver):
     def solve(self) -> AnswerType:
-        result = sum(1 for report in self.reports if self.is_report_safe_with_dampener(report))
+        result = sum(
+            1 for report in self.reports if self.is_report_safe_with_dampener(report)
+        )
         return result
 
     def is_report_safe_with_dampener(self, report: list[int]) -> bool:
@@ -16,7 +18,7 @@ class Day02PartBSolver(Day02Solver):
             return True
 
         for i in range(len(report)):
-            test_list = report[:i] + report[i+1:]
+            test_list = report[:i] + report[i + 1 :]
             if self.is_report_safe(test_list):
                 return True
         return False
@@ -25,16 +27,12 @@ class Day02PartBSolver(Day02Solver):
         pairs = zip(report, report[1:])
         asc = report[1] > report[0]
 
-        return all(
-            (b > a) == asc and
-            1 <= abs(b-a) <= 3
-            for a, b in pairs
-        )
+        return all((b > a) == asc and 1 <= abs(b - a) <= 3 for a, b in pairs)
 
 
 class Day02PartBController(Controller[AnswerType]):
     def __init__(self):
-        super().__init__(2, 'b')
+        super().__init__(2, "b")
 
     def _new_solver(self):
         return Day02PartBSolver()

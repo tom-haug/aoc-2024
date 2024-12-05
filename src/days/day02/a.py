@@ -12,16 +12,12 @@ class Day02PartASolver(Day02Solver):
         pairs = zip(report, report[1:])
         asc = report[1] > report[0]
 
-        return all(
-            (b > a) == asc and
-            1 <= abs(b-a) <= 3
-            for a, b in pairs
-        )
+        return all((b > a) == asc and 1 <= abs(b - a) <= 3 for a, b in pairs)
 
 
 class Day02PartAController(Controller[AnswerType]):
     def __init__(self):
-        super().__init__(2, 'a')
+        super().__init__(2, "a")
 
     def _new_solver(self):
         return Day02PartASolver()
