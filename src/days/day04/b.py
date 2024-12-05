@@ -9,8 +9,16 @@ class Day04PartBSolver(Day04Solver):
         count = 0
         for row in range(self.data.shape[0]):
             for col in range(self.data.shape[1]):
-                if self.data[row, col] == 'A' and 0 < row < self.data.shape[0] - 1 and 0 < col < self.data.shape[1] - 1:
-                    if self.check_word([(row - 1, col - 1), (row, col), (row + 1, col + 1)]) and self.check_word([(row - 1, col + 1), (row, col), (row + 1, col - 1)]):
+                if (
+                    self.data[row, col] == "A"
+                    and 0 < row < self.data.shape[0] - 1
+                    and 0 < col < self.data.shape[1] - 1
+                ):
+                    if self.check_word(
+                        [(row - 1, col - 1), (row, col), (row + 1, col + 1)]
+                    ) and self.check_word(
+                        [(row - 1, col + 1), (row, col), (row + 1, col - 1)]
+                    ):
                         count += 1
         return count
 
@@ -18,12 +26,12 @@ class Day04PartBSolver(Day04Solver):
         word = ""
         for coord in coordinates:
             word += self.data[coord[0], coord[1]]
-        return word == 'MAS' or word == 'SAM'
+        return word == "MAS" or word == "SAM"
 
 
 class Day04PartBController(Controller[AnswerType]):
     def __init__(self):
-        super().__init__(4, 'b')
+        super().__init__(4, "b")
 
     def _new_solver(self):
         return Day04PartBSolver()
