@@ -5,7 +5,29 @@ from src.shared.file_result import FileResult
 
 class Day05PartBSolver(Day05Solver):
     def solve(self) -> AnswerType:
-        return -1
+        updates = self._get_updates_in_status(False)
+        self._fix_updates(updates)
+        return self._calculate_middle_sum(updates)
+
+    def _fix_updates(self, updates: list[dict[int, int]]) -> None:
+        for update in updates:
+            while True:
+                if not any(self._fix_update(update, rule) for rule in self.rules):
+                    break
+
+    def _fix_update(self, update: dict[int, int], rule: tuple[int, int]) -> bool:
+        a_pos, b_pos = rule
+        a_idx = update.get(a_pos)
+        b_idx = update.get(b_pos)
+
+        if a_idx is None or b_idx is None:
+            return False
+
+        if a_idx > b_idx:
+            update[a_pos], update[b_pos] = b_idx, a_idx
+            return True
+
+        return False
 
 
 class Day05PartBController(Controller[AnswerType]):
@@ -19,7 +41,7 @@ class Day05PartBController(Controller[AnswerType]):
         return AnswerType(value)
 
     def test_inputs(self) -> list[FileResult[AnswerType]]:
-        return [FileResult("sample01.txt", -1)]
+        return [FileResult("sample01.txt", 123)]
 
 
 if __name__ == "__main__":
