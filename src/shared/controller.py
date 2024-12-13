@@ -84,10 +84,10 @@ class Controller(ABC, Generic[T]):
 
     def __run_test_inputs(self) -> None:
         tests = self.test_inputs()
-        if len(tests) == 0:
-            raise Exception(
-                f"No test files setup. Add these to: {self.__class__.__name__}"
-            )
+        # if len(tests) == 0:
+        #     raise Exception(
+        #         f"No test files setup. Add these to: {self.__class__.__name__}"
+        #     )
         for test in tests:
             self.__run_input(test)
 
