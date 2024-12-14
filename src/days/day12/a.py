@@ -10,9 +10,7 @@ class Day12PartASolver(Day12Solver):
         return sum(self._calculate_fence_price(region) for _, region in regions)
 
     def _calculate_fence_price(self, region: set[Plot]) -> int:
-        fence_segments = sum(
-            self._count_exposed_sides(plot, region) for plot in region
-        )
+        fence_segments = sum(self._count_exposed_sides(plot, region) for plot in region)
         return fence_segments * len(region)
 
     def _count_exposed_sides(self, plot: Plot, region: set[Plot]) -> int:
