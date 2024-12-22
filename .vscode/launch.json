@@ -8,7 +8,7 @@
       "name": "Python: Module",
       "type": "python",
       "request": "launch",
-      "module": "src.days.day15.a",
+      "module": "src.days.day16.a",
       "console": "integratedTerminal",
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
