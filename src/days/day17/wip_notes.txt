@@ -1,0 +1,41 @@
+Set RegisterB = RegisterA % 8
+Set RegisterB = RegisterB XOR 1
+Set RegisterC = RegisterA / (2 ^ RegisterB)
+Set RegisterB = RegisterB XOR 5
+Set RegisterB = RegisterB XOR RegisterC
+Set RegisterA = RegisterA / (2 ^ 3) = RegisterA / 8
+Output RegisterB % 8
+Loop until RegisterA = 0
+
+
+RegisterA starts as ?
+RegisterB starts as 0
+RegisterC starts as 0
+
+Means RegisterB ends last loop as a multiple of 8 (8, 16, 24, 42....)
+Output 0
+
+
+RegisterB = RegisterA % 8
+RegisterB = (RegisterA % 8) XOR 1
+RegisterC = RegisterA / (2 ^ ((RegisterA % 8) XOR 1))
+RegisterB = ((RegisterA % 8) XOR 1) XOR 5
+RegisterB = (((RegisterA % 8) XOR 1) XOR 5) XOR (RegisterA / (2 ^ ((RegisterA % 8) XOR 1)))
+
+Output (((RegisterA % 8) XOR 1) XOR 5) XOR (RegisterA / (2 ^ ((RegisterA % 8) XOR 1))) % 8 = 0
+RegisterA = RegisterA / 8
+
+
+RegisterA = 4
+RegisterB = 4
+RegisterB = 5
+RegisterC = 4 / (2 ^ 5) = 4 / 32 = 0
+RegisterB = 0
+RegisterB = 0 XOR 0 = 0
+RegisterA = 4 / 8 = 0
+
+At start of last cycle, RegisterA = 4
+4 * 8 = 32
+14 more times
+32 * 8 = 140737490000000
+too low
